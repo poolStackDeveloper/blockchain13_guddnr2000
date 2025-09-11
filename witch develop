@@ -1,0 +1,23 @@
+[33mcommit fdb2cab126d9fc7fab0d563a252d67f94c655073[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mfeature[m[33m)[m
+Author: guddnr2000 <guddnr2000@naver.com>
+Date:   Thu Sep 4 11:41:50 2025 +0900
+
+    Feat: 게시판 메인페이지 생성 index.html
+
+[33mcommit 8210006cac1f8a68cf69154579dec9fb15cccb98[m[33m ([m[1;32mmain[m[33m, [m[1;32mdevelop[m[33m)[m
+Author: guddnr2000 <guddnr2000@naver.com>
+Date:   Thu Sep 4 11:23:07 2025 +0900
+
+    Feat: Git 환경설정 파일 추가 .gitignore
+
+[33mcommit 43f8046363c66a6e5f4e3ad2e68c92bac82d6019[m
+Author: guddnr2000 <guddnr2000@naver.com>
+Date:   Thu Sep 4 10:43:08 2025 +0900
+
+    Fix: 환경 설정을 위한 .gitignore 수정
+
+[33mcommit e8b7339a88436519cbed90ef806b089366130b5f[m
+Author: guddnr2000 <guddnr2000@naver.com>
+Date:   Thu Sep 4 10:06:45 2025 +0900
+
+    start: 프로젝트 개발 세팅 완료
