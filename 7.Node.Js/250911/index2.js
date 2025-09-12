@@ -26,24 +26,28 @@
 
 
 
-const add = require('./add.js');
-const minus = require('./minus.js');
-const fs = require('fs'); //File System
-const dataSync = fs.readFileSync('./sample.txt', 'utf-8');
-const data = fs.readFile('./sample.txt', 'utf-8', (err, data) => {
-    if(err) {
-        throw err;
-    }else{
-        console.log(data+" : 비동기적 처리");
-    }
+// const { setTimeout } = require('timers/promises');
+// const add = require('./add.js');
+// const minus = require('./minus.js');
+// const fs = require('fs'); //File System
+// const dataSync = fs.readFileSync('./sample.txt', 'utf-8');
+// const data = fs.readFile('./sample.txt', 'utf-8', (err, data) => {
+//     if(err) {
+//         throw err;
+//     }else{
+//         console.log(data+" : 비동기적 처리");
+//     }
         
-});
+// });
 
-console.log(add(1,2));
-console.log(minus(2,1));
+// console.log(add(1,2));
+// console.log(minus(2,1));
 
-console.log(dataSync+" : 동기적 처리");
+// console.log(dataSync+" : 동기적 처리");
 
+setTimeout(() => {console.log(1)} , 5000);
+setTimeout(() => {console.log(2)} , 1000);
+// setTimeout(console.log("2"), 2000);
 // Node.js의 내부 구조
 // fs => file System의 약자
 // => Node.js에서 파일을 읽고 쓰고 수정하고 삭제할 수 있게 해주는 모듈
