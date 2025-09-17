@@ -26,7 +26,7 @@ const server = net.createServer((client)=> {
                     return `<h1>메인 페이지이지라</h1>`;
                 case "/users":
                     // return users[0].userName;
-                    return fs.readFileSync("./users.html");
+                    return fs.readFileSync("./users.html","utf-8");
                 default:
                     // break;
                     return `<h1>404 Not Found</h1>`
@@ -34,7 +34,7 @@ const server = net.createServer((client)=> {
         }
 
         try {
-            
+
             // client.write("뭔가 요청이 들어옴!");
             // 끝맺음이 아예 없음.
             // const body = `<h1>Hello! from raw TCP Server!</h1>`;
@@ -43,7 +43,6 @@ const server = net.createServer((client)=> {
             `HTTP/1.1 200 OK\r\n` +
             `Content-Type: text/html; charset=UTF-8\r\n` +
             // `Content-Length: ${Buffer.byteLength(body)}\r\n` +
-            // `Content-Length: 5\r\n` +
             `\r\n` ;
   
             const response = header + body;
