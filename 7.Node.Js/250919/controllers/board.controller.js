@@ -1,6 +1,7 @@
 // 요청이 들어오면, 그에 맞는 동작을 수행하고
 // 결과를 만들어서 응답하는 공간
 
+const { log } = require("console");
 const boards = require("../data/board.data.js")
 const path = require("path");
 
@@ -36,16 +37,75 @@ const postWrite = (req, res) => {
 const getView = (req, res) => {
     const { user_id } = req.params;
     const board = boards.find((board) => board.user_id === user_id);
-    console.log(board);
+    // console.log(board);
     
     res.render("boards/view.html", {
         board
     });
-    console.log(user_id);
+    // console.log(user_id);
+}
+
+const getUpdate = (req, res) => {
+
+    const { user_id } = req.params;
+    const board = boards.find((board) => board.user_id === user_id);
+
+    res.render("boards/update.html", {
+        board
+    });
+}
+
+// 글을 수정할 수 있는 함수
+const postUpdate = (req, res) => {
+    const { id, title, content } = req.body;
+    console.log(req.body);
+    console.log(`${id}, ${title}, ${content}`);
+    
+    const postIndex = boards.findIndex(board => board.id == id);
+    
+    
+    if (postIndex !== -1) {
+        console.log("여기타나?");
+        boards[postIndex].title = title;
+        boards[postIndex].content = content;
+
+        const now = new Date();
+        const kstString = now.toLocaleString('ko-KR', { 
+            timeZone: 'Asia/Seoul', 
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit'
+        }).replace(/\s/g, '').replace(/\./g, '-').slice(0, -1); // YYYY-MM-DD
+        boards[postIndex].updated_at = kstString;
+    } else {
+        alert("test111");
+        // return res.status(404).send('게시글을 찾을 수 없습니다.');
+    }
+
+    res.redirect("/");
+}
+
+const postDelete = (req, res) => {
+    console.log("삭제!!!!!!!!!!!!!");
+    const { id, title, content } = req.body;
+    console.log(`${id}, ${title}, ${content}`);
+    
+    const postIndex = boards.findIndex(board => board.id == id);
+
+    if (postIndex !== -1) {
+        console.log("여기서 삭제 해야 함");
+    } else {
+        return res.status(404).send('게시글을 찾을 수 없습니다.');
+    }
+
+    res.redirect("/");
 }
 
 module.exports = {
     getView,
     getWrite,
-    postWrite
+    postWrite,
+    getUpdate,
+    postUpdate,
+    postDelete
 }

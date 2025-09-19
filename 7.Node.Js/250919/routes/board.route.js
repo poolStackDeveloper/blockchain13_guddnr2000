@@ -1,5 +1,5 @@
-// GET /boards/write 이 요청이 ㄷ르어오면 특정 함수를 실행시켜라
-// POST /boards/write 이 요청이 ㄷ르어오면 특정 함수를 실행시켜라
+// GET /boards/write 이 요청이 들어오면 특정 함수를 실행시켜라
+// POST /boards/write 이 요청이 들어오면 특정 함수를 실행시켜라
 
 const express = require("express");
 
@@ -13,8 +13,16 @@ const router = express.Router();
 // /boards/write
 router.get("/write", boardController.getWrite);
 router.post("/write", boardController.postWrite);
-// user_id = guddnr2000
+
+// /board/view
 router.get("/view/:user_id",boardController.getView);
+
+// /board/update
+router.get("/update/:user_id",boardController.getUpdate);
+router.post("/update",boardController.postUpdate);
+
+// delete
+router.post("/delete/:user_id",boardController.postDelete);
 
 module.exports = router;
 
