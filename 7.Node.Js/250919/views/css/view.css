@@ -1,0 +1,7 @@
+li::marker {
+    marker:none;
+}
+
+li {
+    color : red;
+}

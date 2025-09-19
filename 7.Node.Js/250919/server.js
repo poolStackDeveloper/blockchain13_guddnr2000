@@ -19,7 +19,6 @@ nunjucks.configure("views",{
 app.get("/", (req, res)=> {
     console.log(req.url);
     res.sendFile(`${path}/index.html`)
-
 })
 
 // app.get("/boards", ({res})=> {
