@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시판 리스트</title>
+</head>
+<body>
+    <h1>게시판 리스트</h1>
+    <ul>
+        <!-- 참조 타입들을 순회할 때 시작점과 끝 => -->
+        {% for item in boards %}
+            <li>{{ item.user_id }}</li>
+            <li>{{ item.title }}</li>
+            <li>{{ item.writer }}</li>
+            <li>{{ item.hit }}</li>
+        {% endfor %}
+        <!-- 참조 타입들을 순회할때 끝마침 => -->
+    </ul>
+    <a href="/">메인으로 이동</a> 
+    <a href="/boards/write">글 쓰기 페이지</a> 
+</body>
+</html>

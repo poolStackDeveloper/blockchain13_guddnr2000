@@ -7,11 +7,10 @@ const POST = (url, bodyPart, users) => {
         // POST /users
         case "/users":
             users.push({userId: userName, password});
-
             return {
                 // 나 데이터 생성했으니까, 브라우저야. `/`로 이동해
                 status: "302 Found",
-                headers: { Location: "/"},
+                headers: "",//{ Location: "/"},
                 body: ""               
             }
             
