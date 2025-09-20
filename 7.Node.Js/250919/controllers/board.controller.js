@@ -35,8 +35,9 @@ const postWrite = (req, res) => {
 // params: URL 경로 안에 포함된 값을 받기 위한 방법 => 고유한 자원
 // query: 얘도 마찬가지이긴 하나....
 const getView = (req, res) => {
-    const { user_id } = req.params;
-    const board = boards.find((board) => board.user_id === user_id);
+    const { id } = req.params;
+    
+    const board = boards.find((board) => board.id == id); // ===로는 안되네....
     // console.log(board);
     
     res.render("boards/view.html", {
@@ -65,7 +66,7 @@ const postUpdate = (req, res) => {
     
     
     if (postIndex !== -1) {
-        console.log("여기타나?");
+        // console.log("여기타나?");
         boards[postIndex].title = title;
         boards[postIndex].content = content;
 
@@ -85,16 +86,20 @@ const postUpdate = (req, res) => {
     res.redirect("/");
 }
 
-const postDelete = (req, res) => {
-    console.log("삭제!!!!!!!!!!!!!");
-    const { id, title, content } = req.body;
-    console.log(`${id}, ${title}, ${content}`);
+const getDelete = (req, res) => {
+    console.log(req.params);
+    const { id } = req.params;
     
     const postIndex = boards.findIndex(board => board.id == id);
 
     if (postIndex !== -1) {
-        console.log("여기서 삭제 해야 함");
+        //console.log("여기서 삭제 해야 함");
+        console.log(`boards.length=${boards.length}`);
+        // boards.slice(postIndex,1);
+        boards.splice(postIndex,1); //슬라이스가 아니라 스플라이스 였네....
+        console.log(`boards.length=${boards.length}`);
     } else {
+        
         return res.status(404).send('게시글을 찾을 수 없습니다.');
     }
 
@@ -107,5 +112,5 @@ module.exports = {
     postWrite,
     getUpdate,
     postUpdate,
-    postDelete
+    getDelete
 }

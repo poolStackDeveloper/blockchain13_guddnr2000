@@ -15,14 +15,14 @@ router.get("/write", boardController.getWrite);
 router.post("/write", boardController.postWrite);
 
 // /board/view
-router.get("/view/:user_id",boardController.getView);
+router.get("/view/:id",boardController.getView);
 
 // /board/update
 router.get("/update/:user_id",boardController.getUpdate);
 router.post("/update",boardController.postUpdate);
 
 // delete
-router.post("/delete/:user_id",boardController.postDelete);
+router.get("/delete/:id",boardController.getDelete);
 
 module.exports = router;
 

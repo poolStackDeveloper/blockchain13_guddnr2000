@@ -10,10 +10,11 @@
     <ul>
         <!-- 참조 타입들을 순회할 때 시작점과 끝 => -->
         {% for item in boards %}
+            <li>{{ item.id }}</li>
             <li>{{ item.user_id }}</li>
             <li>
                 <!-- GET /boards/view/guddnr2000 -->
-                 <a href="/boards/view/{{ item.user_id }}">{{ item.title }}</a>
+                 <a href="/boards/view/{{ item.id }}">{{ item.title }}</a>
             </li>
             <li>{{ item.writer }}</li>
             <li>{{ item.hit }}</li>
