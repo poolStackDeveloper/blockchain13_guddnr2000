@@ -1,7 +1,8 @@
 const express = require("express");
 const nunjucks = require("nunjucks");
 const app = express();
-const path =`${__dirname}/views/boards`;
+const path =`${__dirname}/views`;
+
 //아래 두개 추가
 const boards = require("./data/board.data.js");
 const boardRouter = require("./routes/board.route.js")
@@ -17,13 +18,15 @@ nunjucks.configure("views",{
 })
 
 app.get("/", (req, res)=> {
-    console.log(req.url);
-    res.sendFile(`${path}/index.html`)
+    res.sendFile(`${path}/boards/index.html`)
 })
 
 // app.get("/boards", ({res})=> {
 app.get("/boards", (req, res)=> {
     res.render("boards/list.html",
+        // "boards/list.html"   : O
+        // "/boards/list.html"  : X (경로 앞에 `/` 붙이면 오류발생!!!)
+        // 이유가 무엇인가???
         {boards})
 })
 
@@ -33,3 +36,6 @@ app.use("/boards", boardRouter);
 app.listen(3000, () => {
     console.log("서버가 실행되었습니다.");
 })
+
+// CSS파일 사용을 위해 - 정적 파일 루트로 설정
+app.use(express.static(path));

@@ -23,13 +23,13 @@ const postWrite = (req, res) => {
         user_id,
         title,
         content,
-        id: boards.kength + 1,
+        id: boards.length + 1,
         writeer: "주병현",
         hit: 0,
         created_at: "2025-09-19",
         updated_at: "2025-09-19"
     })
-    res.redirect("/");
+    res.redirect("/boards");
 }
 
 // params: URL 경로 안에 포함된 값을 받기 위한 방법 => 고유한 자원
@@ -48,8 +48,10 @@ const getView = (req, res) => {
 
 const getUpdate = (req, res) => {
 
-    const { user_id } = req.params;
-    const board = boards.find((board) => board.user_id === user_id);
+    const { id } = req.params;
+    console.log(id);
+    
+    const board = boards.find((board) => board.id == id);
 
     res.render("boards/update.html", {
         board
@@ -60,6 +62,8 @@ const getUpdate = (req, res) => {
 const postUpdate = (req, res) => {
     const { id, title, content } = req.body;
     console.log(req.body);
+    // console.log();
+    
     console.log(`${id}, ${title}, ${content}`);
     
     const postIndex = boards.findIndex(board => board.id == id);
@@ -79,11 +83,11 @@ const postUpdate = (req, res) => {
         }).replace(/\s/g, '').replace(/\./g, '-').slice(0, -1); // YYYY-MM-DD
         boards[postIndex].updated_at = kstString;
     } else {
-        alert("test111");
-        // return res.status(404).send('게시글을 찾을 수 없습니다.');
+        // alert("test111");
+        return res.status(404).send('게시글을 찾을 수 없습니다.');
     }
 
-    res.redirect("/");
+    res.redirect("/boards");
 }
 
 const getDelete = (req, res) => {
@@ -95,7 +99,7 @@ const getDelete = (req, res) => {
     if (postIndex !== -1) {
         //console.log("여기서 삭제 해야 함");
         console.log(`boards.length=${boards.length}`);
-        // boards.slice(postIndex,1);
+        boards.sli
         boards.splice(postIndex,1); //슬라이스가 아니라 스플라이스 였네....
         console.log(`boards.length=${boards.length}`);
     } else {
@@ -103,7 +107,7 @@ const getDelete = (req, res) => {
         return res.status(404).send('게시글을 찾을 수 없습니다.');
     }
 
-    res.redirect("/");
+    res.redirect("/boards");
 }
 
 module.exports = {

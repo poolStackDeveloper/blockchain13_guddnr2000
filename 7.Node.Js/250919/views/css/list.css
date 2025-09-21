@@ -1,0 +1,26 @@
+li {
+    display:inline-block;
+  list-style: none;
+}
+
+/* label{
+    display: inline-block;
+    width: 150px;
+} */
+
+.grpRow{
+    display: flex;
+    height:30px;
+}
+
+.grpRow label {
+    background-color: rgb(27, 27, 27);
+    text-align: center;
+    color :antiquewhite;
+    display: inline-block;
+    width: 120px;
+}
+.grpRow > li {
+    margin-left: 10px;
+    
+}

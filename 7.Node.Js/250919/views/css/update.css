@@ -1,0 +1,32 @@
+.grpRow{
+    display: flex;
+    height:30px;
+    gap:3px;
+    width:500px;
+}
+
+.grpRow label {
+    background-color: rgb(27, 27, 27);
+    text-align: center;
+    color :antiquewhite;
+    display: inline-block;
+    width: 120px;
+}
+
+.grpRow input {
+    width: 100%;
+}
+
+button{
+    display:flex;
+    /* flex-direction: inherit; */
+    justify-content: center;
+    height:25px;
+    position: relative;
+    
+    margin-left: auto;
+    margin-top: 30px;
+    color:aliceblue;
+    background-color: rgb(0, 0, 97);
+    width: 120px;
+}

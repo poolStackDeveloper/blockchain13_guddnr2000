@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,10 +7,21 @@
 </head>
 <body>
     <form action="/boards/write" method="post">
-        <input type="text" name="user_id">
-        <input type="text" name="title">
-        <input type="text" name="content">
-        <button type="submit">글작성</button>
+
+        <div class="grpRow">
+            <label for="id">User ID</label><input type="text" name="user_id">
+        </div>
+        <div class="grpRow">
+            <label for="id">Title</label><input type="text" name="title">
+        </div>
+        <div class="grpRow">
+            <label for="id">Content</label><input type="text" name="content">
+        </div>
+        <div class="grpRow">
+            <button type="submit">글작성</button>
+        </div>
+        
+        
     </form>
 </body>
 </html>
