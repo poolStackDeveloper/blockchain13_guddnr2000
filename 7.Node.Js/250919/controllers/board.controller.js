@@ -99,7 +99,6 @@ const getDelete = (req, res) => {
     if (postIndex !== -1) {
         //console.log("여기서 삭제 해야 함");
         console.log(`boards.length=${boards.length}`);
-        boards.sli
         boards.splice(postIndex,1); //슬라이스가 아니라 스플라이스 였네....
         console.log(`boards.length=${boards.length}`);
     } else {

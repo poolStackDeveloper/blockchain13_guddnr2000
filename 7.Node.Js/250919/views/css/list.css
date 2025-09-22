@@ -3,11 +3,6 @@ li {
   list-style: none;
 }
 
-/* label{
-    display: inline-block;
-    width: 150px;
-} */
-
 .grpRow{
     display: flex;
     height:30px;

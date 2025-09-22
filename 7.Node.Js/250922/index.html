@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>비동기 요청(form태그 말고! 클라이언트에서!</title>
+    <!-- fetch를 쓰기 위해 CDN 연결 (구형 브라우저 호환용) -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@3.6.2/dist/fetch.umd.min.js"></script> -->
+</head>
+<body>
+    <button type="button" id="load">강아지 사진 불러오기</button>
+    <img src="#" alt="강아지 사진이 없음" id="dog" width="300">
+    <!-- `클릭`했을 때 요청을 보낸다 -->
+     <script>
+        const button = document.querySelector("#load");
+        const img = document.querySelector("#dog");
+
+        button.addEventListener("click", async() => {
+            try {
+                // const response = await fetch("https://dog.ceo/api/breeds/image/random");
+                const response = await fetch("https://dog.ceo/api/breeds/image/random");
+                // const data = response.json(); 
+                const data = await response.json();
+                img.src = data.message;
+                
+            } catch (error) {
+                alert("사진을 불러오지 못했습니다.");
+                console.log(error);
+            }
+        })
+
+     </script>
+</body>
+</html>
