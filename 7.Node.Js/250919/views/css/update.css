@@ -1,7 +1,7 @@
 .grpRow{
     display: flex;
     height:30px;
-    gap:3px;
+    gap:2px;
     width:500px;
 }
 
@@ -15,6 +15,13 @@
 
 .grpRow input {
     width: 100%;
+    border: 1px solid;
+}
+
+.grpRow > .inputReadOnly {
+    /* width: 100%; */
+    color:rgb(99, 99, 99);
+    background-color: rgb(231, 231, 231);
 }
 
 button{

@@ -1,0 +1,39 @@
+.grpRow{
+    display: flex;
+    height:30px;
+    gap:2px;
+    width:500px;
+}
+
+.grpRow label {
+    background-color: rgb(27, 27, 27);
+    text-align: center;
+    color :antiquewhite;
+    display: inline-block;
+    width: 120px;
+}
+
+.grpRow input {
+    width: 100%;
+    border: 1px solid;
+}
+
+.grpRow > .inputReadOnly {
+    /* width: 100%; */
+    color:rgb(99, 99, 99);
+    background-color: rgb(231, 231, 231);
+}
+
+button{
+    display:flex;
+    /* flex-direction: inherit; */
+    justify-content: center;
+    height:25px;
+    position: relative;
+    
+    margin-left: auto;
+    margin-top: 30px;
+    color:aliceblue;
+    background-color: rgb(0, 0, 97);
+    width: 120px;
+}

@@ -3,19 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/view.css">
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/view.css">
     <title>게시판 상세 페이지</title>
 </head>
 <body>
-    <ul>
+    <!-- <ul>
         <li>유저 아이디</li>
         <li>내용</li>
         <li>생성일</li>
-    </ul>
+    </ul> -->
+    <h1>게시물 상세 내용</h1>
     <ul>
-        <li>{{ board.user_id }}</li>
-        <li>{{ board.content }}</li>
-        <li>{{ board.created_at }}</li>
+        <div class="grpRow">
+            <label for="id">User ID</label><li>{{ board.user_id }}</li>
+        </div>
+        <div class="grpRow">
+            <label for="id">Title</label><li>{{ board.content }}</li>
+        </div>
+        <div class="grpRow">
+            <label for="id">Content</label><li>{{ board.created_at }}</li>
+        </div>
+        
+        
+        
     </ul>
     <a href="/boards/update/{{ board.id }}">수정하기</a>
 
