@@ -10,6 +10,7 @@ const boardRouter = require("./routes/board.route.js")
 // 브라우저가 보내는 x-www-form-unlencoded 형식의 데이터를
 // Javascript 객체로 파싱해서 req.body에 담아줘! => 그걸 허용하겠다.
 app.use(express.urlencoded({ extended: false}));
+app.use(express.json()); //글쓰기에서 form.submit 대신 json을 넘기기 위해 사용.
 
 app.set("view engine", "html");
 

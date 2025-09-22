@@ -18,13 +18,16 @@ const getWrite = (req, res) => {
 
 // 글을 쓸 수 있는 함수
 const postWrite = (req, res) => {
+    // console.log("왜 req.body가 안넘어오냐???");
+        // server.js 에서 app.use(express.json()); 추가하여 해결함
+    
     const {user_id, title, content } = req.body;
     boards.push({
         user_id,
         title,
         content,
         id: boards.length + 1,
-        writeer: "주병현",
+        writer: "최형욱",
         hit: 0,
         created_at: "2025-09-19",
         updated_at: "2025-09-19"
@@ -60,14 +63,12 @@ const getUpdate = (req, res) => {
 
 // 글을 수정할 수 있는 함수
 const postUpdate = (req, res) => {
+    console.log("여기 타나???");
     const { id, title, content } = req.body;
     console.log(req.body);
-    // console.log();
-    
+
     console.log(`${id}, ${title}, ${content}`);
-    
     const postIndex = boards.findIndex(board => board.id == id);
-    
     
     if (postIndex !== -1) {
         // console.log("여기타나?");
@@ -109,11 +110,32 @@ const getDelete = (req, res) => {
     res.redirect("/boards");
 }
 
+const delDelete = (req, res) => {
+    console.log(req.params);
+    const { id } = req.params;
+    
+    const postIndex = boards.findIndex(board => board.id == id);
+
+    if (postIndex !== -1) {
+        //console.log("여기서 삭제 해야 함");
+        console.log(`boards.length=${boards.length}`);
+        boards.splice(postIndex,1); //슬라이스가 아니라 스플라이스 였네....
+        console.log(`boards.length=${boards.length}`);
+        return res.json({ success: true, message: "삭제 성공"}); //리턴 메세지를 써야 삭제 성공을 화면에 뿌릴 수 있다!!!!
+    } else {
+        
+        return res.status(404).send('게시글을 찾을 수 없습니다.');
+    }
+
+    res.redirect("/boards");
+}
+
 module.exports = {
     getView,
     getWrite,
     postWrite,
     getUpdate,
     postUpdate,
-    getDelete
+    getDelete, //삭제 예정
+    delDelete
 }

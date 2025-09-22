@@ -9,28 +9,55 @@
 </head>
 <body>
     <h1>수정하기 페이지</h1>
-    <form action="/boards/update" method="post">
+    <form id="formModify"  action="/boards/update" method="post">
         <div class="grpRow">
             <label for="id">Board ID</label><input class="inputReadOnly" type="text" name="id" value="{{ board.id }}" readonly> <!-- disable 처리하면 파라미터가 안넘어감-->
         </div>
-        
         <div class="grpRow">
             <label for="title">Title</label><input type="text" name = "title" value="{{ board.title }}">
         </div>
         <div class="grpRow">
-            <label for="user_id">user_id</label><input class="inputReadOnly" type="text" name = "user_id" value="{{ board.user_id }}" readonly>
+            <label for="user_id">User ID</label><input class="inputReadOnly" type="text" name = "user_id" value="{{ board.user_id }}" readonly>
         </div>
         <div class="grpRow">
-            <label for="content">content</label><input type="text" name = "content" value="{{ board.content }}">
+            <label for="content">Content</label><input type="text" name = "content" value="{{ board.content }}">
         </div>
         <div class="grpRow">
-            <label for="created_at">created_at</label><input class="inputReadOnly" type="text" name = "created_at" value="{{ board.created_at }}" readonly>
+            <label for="created_at">Created At</label><input class="inputReadOnly" type="text" name = "created_at" value="{{ board.created_at }}" readonly>
         </div>
         <div class="grpRow">
-            <button type="submit">수정</button>
+            <button id="btnModify" type="click">수정</button>
         </div>
-        
     </form>
+
+    <script>
+        const fnModify = async(e) => {
+            e.preventDefault();
+            if(confirm("수정하시겠습니까?")){
+                try {
+                    const formData = new FormData(document.querySelector("#formModify"));
+                    const data = Object.fromEntries(formData.entries()); //entries() 함수를 호출 해야 함!!!
+                    
+                    const response = await fetch(`/boards/update`,{
+                        method:"POST",
+                        headers:{ //header 가 아니라 headers (S가 붙는다)
+                            "content-type" : "application/json"
+                        },
+                        body: JSON.stringify(data)
+                    })
+
+                    if (!response.ok) throw new Error("저장 실패");
+                    alert("저장되었습니다.",data.message);
+                    window.location.href="/boards";
+                } catch (error) {
+                    alert("오류가 발생하였습니다",error);
+                }
+            }
+        }
+        const domBtnModify = document.querySelector("#btnModify");
+        domBtnModify.addEventListener("click",fnModify);
+
+    </script>
     
 </body>
 </html>

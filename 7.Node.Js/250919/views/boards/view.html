@@ -24,13 +24,34 @@
         <div class="grpRow">
             <label for="id">Content</label><li>{{ board.created_at }}</li>
         </div>
-        
-        
-        
+
     </ul>
     <a href="/boards/update/{{ board.id }}">수정하기</a>
 
     <a href="/boards/delete/{{ board.id }}">삭제하기</a>
-    <!-- <button type="button" onclick="href='">수정하기</button> -->
+    <button id="btnDelete">삭제하기</button>
+    
+    <script>
+        const boardId = "{{ board.id }}";
+        const fnDelete = async(e)=> {
+            e.preventDefault();
+            if (confirm("정말 삭제하시겠습니까?")){
+                try {
+                    const response = await fetch(`/boards/delete/${boardId}`, {method:"DELETE"});
+                    if (!response.ok) throw new Error("삭제 실패");
+                    const data = await response.json();
+                    alert("삭제 성공!");
+                    window.location.href = "/boards";
+                } catch (error) {
+                    alert("에러발생",error.message);
+                }
+            }
+            
+        }
+
+        const domDeleteBtn = document.querySelector("#btnDelete");
+        domDeleteBtn.addEventListener("click",fnDelete);
+    </script>
+    
 </body>
 </html>
