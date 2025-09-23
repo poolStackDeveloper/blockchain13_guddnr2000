@@ -28,8 +28,6 @@
                 e.preventDefault();
                 if(confirm("게시물을 등록 하시겠습니까?")){
                     try {
-                        // const response = await formWrite.submit();
-                        // console.log("3"); //여기에 로그 찍어봤자 서버에는 안찍히는구나..
                         const formData = new FormData(document.querySelector("#formWrite"));
                         const data = Object.fromEntries(formData.entries());
                     

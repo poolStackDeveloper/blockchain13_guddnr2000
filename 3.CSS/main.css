@@ -1,0 +1,346 @@
+/* ------------------------- */
+/* 1. 기본 & 전체 설정       */
+/* ------------------------- */
+
+/* Google Fonts에서 폰트 가져오기 */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap');
+
+/* CSS 변수 선언: 색상, 폰트 등을 변수로 만들어 재사용하고 관리하기 쉽게 함 */
+:root {
+    --font-sans: 'Roboto', sans-serif; /* 기본 UI 폰트 */
+    --font-serif: 'Playfair Display', serif; /* 메인 제목 폰트 */
+    --color-dark: #0d0c22;        /* 기본 검정색 */
+    --color-grey: #6e6d7a;        /* 회색 텍스트 */
+    --color-grey-hover: #7e7b85; /* 검색창 호버 시 배경색 */
+    --color-light-grey: #f3f3f3; /* 검색창 배경 */
+    --color-white: #ffffff;
+    --color-border: #e7e7e9;
+    --color-pink: #faebf9; /* 검색창 호버 시 배경색 */
+}
+
+
+
+/* 모든 요소에 적용할 기본 스타일 (Reset) */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--color-white);
+    color: var(--color-dark);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+/* ------------------------- */
+/* 2. 헤더 (Header)         */
+/* ------------------------- */
+.site-header {
+    width: 100%;
+    padding: 20px 40px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.header-left, .header-right {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.main-nav ul {
+    display: flex;
+    gap: 25px;
+}
+
+.main-nav a {
+    color: var(--color-grey);
+    font-weight: 500;
+
+    position: relative; /* ::after 가상 요소의 위치 기준 */
+    padding-bottom: 5px; /* 밑줄과 텍스트 사이의 간격 */
+}
+
+/* 2. ::after 가상 요소를 사용해 밑줄을 만듭니다. */
+.main-nav a::after {
+    content: ''; /* 가상 요소에는 반드시 content 속성이 필요합니다. */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    /* 밑줄의 모양 */
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-pink); /* 밑줄 색상 */
+
+    /* [핵심] 평소에는 가로 크기를 0으로 만들어 숨겨둡니다. */
+    transform: scaleX(0);
+    
+    /* [핵심] 애니메이션이 중앙에서 시작되도록 기준점을 설정합니다. */
+    transform-origin: center;
+
+    /* [핵심] transform 속성이 변할 때 부드러운 애니메이션 효과를 줍니다. */
+    transition: transform 0.3s ease-out;
+}
+
+/* 3. <a> 태그에 hover 했을 때 밑줄이 나타나도록 합니다. */
+.main-nav a:hover::after {
+    /* 가로 크기를 100%로 만들어 밑줄을 표시합니다. */
+    transform: scaleX(1);
+}
+
+
+
+
+
+/* ------------------------- */
+/* ✅ 250923 실습 작성 start */
+/* ------------------------- */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ------------------------- */
+/* ✅ 250923 실습 작성 end */
+/* ------------------------- */
+
+
+
+/* 1. 타이핑 효과를 위한 @keyframes 정의 */
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+/* 2. 깜빡이는 커서(caret)를 위한 @keyframes 정의 */
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: #333; } /* 커서 색상 */
+}
+
+/* 3. h1 태그에 타이핑 효과 적용 */
+.typing-effect {
+    /* 기존 h1 스타일 (폰트, 크기 등) */
+    font-family: var(--font-serif);
+    font-size: 24px;
+    max-width: 800px;
+    line-height: 1.2;
+    margin-bottom: 20px;
+
+    /* [핵심] 타이핑 효과를 위한 스타일 */
+    width: 100%; /* keyframes의 to { width: 100% }와 일치시킴 */
+    overflow: hidden; /* width 밖으로 나가는 텍스트를 숨김 */
+    white-space: nowrap; /* 텍스트가 줄바꿈되지 않도록 함 */
+    
+    /* [핵심] 깜빡이는 커서 만들기 */
+    border-right: 3px solid #333;
+
+    /* [핵심] 2개의 애니메이션을 동시에 적용 */
+    animation: 
+        typing 4s steps(53, end), /* 4초 동안 53단계로 타이핑 */
+        blink-caret .75s step-end infinite; /* 0.75초 주기로 커서 깜빡임 */
+}
+
+.search-filter {
+    display:  flex;
+    align-items: center;
+    position: relative; /* 드롭다운 메뉴 위치 조정을 위해 필요. 이게 있어야 자식의 위치가 search-filter 를 기준으로 정렬됨⭐⭐⭐⭐ */
+    border-left: 1px solid var(--color-border);
+    padding-left: 15px;
+    margin-left: 10px;
+    color: var(--color-dark);
+    font-weight: 400;
+    cursor: pointer;
+
+
+  /* 추가: 색상 변경을 부드럽게 만들기 위한 transition */
+    transition: color 0.3s ease;
+}
+
+.search-filter:hover {
+    color: var(--color-grey-hover);
+}
+
+/* 드롭다운 메뉴의 기본 디자인 */
+.dropdown-menu {
+    /* 디자인*/
+    position: absolute; /* 부모(.search-filter) 기준으로 위치 지정 */
+    top: calc(100% + 10px); /* 부모 바로 아래 10px 지점 */
+    right: 0;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 8px;
+    min-width: 150px;
+    z-index: 10;
+    /* 상태/애니메이션 */
+    opacity: 0; /* 투명하게 */
+    visibility: hidden; /* 보이지 않게 */
+    transform: translateY(-10px); /* 살짝 위로 이동 */
+    transition: all 0.3s ease; /* 부드러운 애니메이션 효과 */
+}
+
+
+/* .is-open 클래스가 붙었을 때 dropdown-menu 표시 처리 */
+.search-filter.is-open .dropdown-menu {
+    opacity: 1; /* 불투명하게 */
+    visibility: visible; /* 보이게 */
+    transform: translateY(0); /* 제자리로 이동 */
+}
+
+/* 메뉴 아이템 스타일 */
+.dropdown-menu li a {
+    display: block;
+    padding: 10px 12px;
+    border-radius: 4px;
+}
+.dropdown-menu li a:hover {
+    background-color: #f3f3f3;
+}
+
+
+
+.search-filter .fa-chevron-down {
+    /* fa-chevron-down 이건인기본적인 폰트 어썸❓❓❓ */
+    margin-left: 5px;
+    font-size: 12px;
+    
+    /* ✨ 부드러운 전환 효과를 위해 transition 추가 */
+    transition: transform 0.3s ease;
+}
+
+/* .search-filter.is-open처럼 클래스 이름이 공백 없이 붙어있는 것은 "AND" 조건을 의미합니다.
+
+ */
+.search-filter.is-open .fa-chevron-down {
+    /* JavaScript가 추가할 .is-open 클래스가 있을 때의 스타일 정의 */
+    /* 180도 회전시켜 위를 보게 함 */
+    transform: rotate(180deg);
+}
+
+/* ------------------------- */
+/* 3. 버튼 (Buttons)         */
+/* ------------------------- */
+.btn {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn-secondary { /* Sign up */
+    color: var(--color-grey);
+}
+
+.btn-primary { /* Log in */
+    background-color: var(--color-dark);
+    color: var(--color-white);
+}
+
+.btn-dark { /* Post a job */
+    background-color: var(--color-dark);
+    color: var(--color-white);
+    padding: 15px 25px;
+    font-size: 16px;
+    border-radius: 30px;
+}
+
+/* ------------------------- */
+/* 4. 메인 콘텐츠 (Main)     */
+/* ------------------------- */
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+}
+
+.hero-section {
+    text-align: center;
+    padding: 80px 0;
+}
+
+.hero-section h1 {
+    font-family: var(--font-serif);
+    font-size: 72px;
+    max-width: 800px;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.hero-section p {
+    font-size: 20px;
+    color: var(--color-grey);
+    max-width: 600px;
+    line-height: 1.6;
+    margin: 0 auto 40px;
+}
+
+.tab-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.tab-nav {
+    display: flex;
+    gap: 30px;
+}
+
+.tab-item {
+    padding: 15px 5px;
+    font-weight: 500;
+    color: var(--color-grey);
+    position: relative;
+    bottom: -1px; /* 테두리와 겹치게 하기 위한 트릭 */
+}
+
+.tab-item.active {
+    color: var(--color-dark);
+    border-bottom: 2px solid var(--color-dark);
+}
