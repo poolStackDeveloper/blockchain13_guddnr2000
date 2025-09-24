@@ -27,7 +27,7 @@ router.get("/update/:id",boardController.getUpdate);
 router.post("/update",boardController.postUpdate);
 
 // delete
-router.get("/delete/:id",boardController.getDelete);
+// router.get("/delete/:id",boardController.getDelete);
 router.delete("/delete/:id",boardController.delDelete);
 
 module.exports = router;

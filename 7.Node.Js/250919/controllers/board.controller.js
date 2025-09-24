@@ -91,24 +91,24 @@ const postUpdate = (req, res) => {
     res.redirect("/boards");
 }
 
-const getDelete = (req, res) => {
-    console.log(req.params);
-    const { id } = req.params;
+// const getDelete = (req, res) => {
+//     console.log(req.params);
+//     const { id } = req.params;
     
-    const postIndex = boards.findIndex(board => board.id == id);
+//     const postIndex = boards.findIndex(board => board.id == id);
 
-    if (postIndex !== -1) {
-        //console.log("여기서 삭제 해야 함");
-        console.log(`boards.length=${boards.length}`);
-        boards.splice(postIndex,1); //슬라이스가 아니라 스플라이스 였네....
-        console.log(`boards.length=${boards.length}`);
-    } else {
+//     if (postIndex !== -1) {
+//         //console.log("여기서 삭제 해야 함");
+//         console.log(`boards.length=${boards.length}`);
+//         boards.splice(postIndex,1); //슬라이스가 아니라 스플라이스 였네....
+//         console.log(`boards.length=${boards.length}`);
+//     } else {
         
-        return res.status(404).send('게시글을 찾을 수 없습니다.');
-    }
+//         return res.status(404).send('게시글을 찾을 수 없습니다.');
+//     }
 
-    res.redirect("/boards");
-}
+//     res.redirect("/boards");
+// }
 
 const delDelete = (req, res) => {
     console.log(req.params);
@@ -136,6 +136,6 @@ module.exports = {
     postWrite,
     getUpdate,
     postUpdate,
-    getDelete, //삭제 예정
+    // getDelete, //삭제 예정
     delDelete
 }
