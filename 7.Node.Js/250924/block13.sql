@@ -122,6 +122,6 @@ CREATE TABLE boards(
     ,created_at     DATETIME DEFAULT now() 
     
     , FOREIGN KEY (user_id) REFERENCES users(user_id) 
-    -- ON DELETE CASCADE 
-    ON DELETE SET NULL
+    -- ON DELETE CASCADE --DELETE시, 참조키에 해당하는 하위 테이블의 데이터까지 모두 삭제
+    -- ON DELETE SET NULL --DELETE시, 참조키에 해당하는 하위 테이블의 데이터는 NULL값 처리
 );

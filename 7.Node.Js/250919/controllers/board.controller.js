@@ -127,7 +127,6 @@ const delDelete = (req, res) => {
         return res.status(404).send('게시글을 찾을 수 없습니다.');
     }
 
-    res.redirect("/boards");
 }
 
 module.exports = {

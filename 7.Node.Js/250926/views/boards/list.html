@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>유저 목록 페이지</title>
+</head>
+<body>
+    <div id="board">
+        <ul>
+            <li>유저 아이디</li>
+            <li>제목</li>
+            <li>조회수</li>
+        </ul>
+        {% for board in boards %}
+        <ul>
+            <li>{{ board.user_id }}</li>
+            <li>
+                <a href="/boards/view/{{ board.id }}">{{ board.title }}</a>
+            </li>
+            <li>{{ board.hit }}</li>
+        </ul>
+        {% endfor %}
+        <a href="/boards/write">글 작성하기</a>
+    </div>
+</body>
+</html>
