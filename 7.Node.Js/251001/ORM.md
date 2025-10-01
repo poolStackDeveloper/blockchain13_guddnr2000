@@ -9,7 +9,7 @@ fetch를 이용해 서버로 데이터를 보냄
 그래서... req.body 받아서 그 값을 확인해서 DB에 통신 이라고 하죠
 
 ```sql
-INSERT INTO ㅕㄴㄷㄱㄴ(...) values(?,?,?)
+INSERT INTO users(...) values(?,?,?)
 ```
 
 이 코드를 우리는 직접 작성했습니다.
