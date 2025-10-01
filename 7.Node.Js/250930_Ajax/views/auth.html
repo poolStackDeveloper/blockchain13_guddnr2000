@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인 페이지</title>
+</head>
+
+<body>
+    <header id="header">
+        
+    </header>
+    <ul>
+        <li>a</li>
+        <li>b</li>
+        <li>c</li>
+    </ul>
+    <form action="/login" method="post" id="loginForm">
+        <input type="text" placeholder="아이디를 입력해주세요" name="user_id">
+        <input type="password" placeholder="비밀번호를 입력해주세요" name="password">
+        <button type="submit">로그인</button>
+    </form>
+    <!-- 클라이언트 요청을 만들어보자 -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        //내부 모듈 -> fetch 라는 것이 있지만, 훨씬 더 이전에 XMLHttpRequest()가 있다.
+        // 객체 먼저 생성해보겠다!
+        
+        const loginForm = document.querySelector("#loginForm");
+        // loginForm.addEventListener("submit", (e) => {
+        //     e.preventDefault();
+        //     // 1단계 요청을 보낼 수 있는 인스턴스 객체 생성
+        //     const xhr = new XMLHttpRequest();
+        //     // 2단계 요청 준비 => open 메서드
+        //     // xhr.open([요청메서드],[요청URL])
+        //     xhr.open("POST", "http://localhost:3000/login");
+        //     // 3단계 요청헤더 설정
+        //     // JSON으로 데이터를 보낼거임(userId, password)
+        //     xhr.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
+        //     //4단계 요청 본문(body) 작성
+        //     xhr.send(JSON.stringify({
+        //         user_id: e.target.user_id.value,
+        //         password: e.target.password.value
+        //     }));
+        //     //5단계 서버에서 응답해줬을 때의 응답 처리 (onload)
+        //     xhr.onload = () => {
+        //         if (xhr.status == 200){
+        //             const res = JSON.parse(xhr.response);
+        //             // console.log(res.message);
+        //             alert(res.message);
+        //             window.location.href= "/boards";
+        //         }else{
+        //             console.log("로그인 실패...", xhr.statusText);
+        //             alert("로그인 실패했음! 다시 시도바람")
+        //         }
+        //     }
+        // })
+
+        loginForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            try {
+                const { data } = await axios.post("http://localhost:3000/login", { 
+                    user_id: e.target.user_id.value,
+                    password: e.target.password.value
+                })
+                alert(data.message);
+                window.location.href= "/boards";
+            } catch (error) {
+                console.log(error.response.data);
+                alert(error.response.data.message || "로그인 실패");
+                
+            }
+        });
+
+    </script>
+</body>
+</html>
