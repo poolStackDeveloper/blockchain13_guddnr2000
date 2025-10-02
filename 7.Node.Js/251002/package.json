@@ -1,0 +1,18 @@
+{
+  "name": "251002",
+  "version": "1.0.0",
+  "description": "지금까지는 Sequelize로 DB 테이블과 관계를 다뤘습니다. 하지만 실제 서비스에서는 문자열·숫자만 저장하는 게 끝이 아닙니다. 이제는 게시글, 사용자 프로필, 첨부파일 등 **파일 리소스**까지 함께 다뤄야 합니다.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0",
+    "multer": "^2.0.2",
+    "nunjucks": "^3.2.4"
+  }
+}
